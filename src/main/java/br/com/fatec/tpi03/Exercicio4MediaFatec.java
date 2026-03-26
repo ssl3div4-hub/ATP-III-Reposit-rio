@@ -1,44 +1,50 @@
 package br.com.fatec.tpi03;
 
-import java.util.Scanner;
-
 public class Exercicio4MediaFatec {
     private static final double NOTA_MINIMA = 0.0;
     private static final double NOTA_MAXIMA = 10.0;
 
-    public static void executar(Scanner scanner) {
-        System.out.println("\n--- Exercício 4: Média do aluno (modelo Fatec) ---");
-
-        double p1 = lerNota(scanner, "Digite a nota da P1 (0 a 10): ");
-        double p2 = lerNota(scanner, "Digite a nota da P2 (0 a 10): ");
-
-        double mediaSemestral = (p1 + p2) / 2.0;
-        System.out.printf("Média semestral: %.2f%n", mediaSemestral);
-
-        if (mediaSemestral >= 6.0) {
-            System.out.println("Situação: APROVADO.");
+    public static void executar() {
+        Double p1 = lerNota("Exercício 4\nDigite a nota da P1 (0 a 10):");
+        if (p1 == null) {
             return;
         }
 
-        System.out.println("Aluno em exame.");
-        double exame = lerNota(scanner, "Digite a nota do exame (0 a 10): ");
-        double mediaFinal = (mediaSemestral + exame) / 2.0;
+        Double p2 = lerNota("Exercício 4\nDigite a nota da P2 (0 a 10):");
+        if (p2 == null) {
+            return;
+        }
 
-        System.out.printf("Média final: %.2f%n", mediaFinal);
+        double mediaSemestral = (p1 + p2) / 2.0;
+
+        if (mediaSemestral >= 6.0) {
+            InputUtils.mostrarInfo(String.format("Média semestral: %.2f\nSituação: APROVADO.", mediaSemestral));
+            return;
+        }
+
+        Double exame = lerNota(String.format("Média semestral: %.2f\nAluno em exame.\nDigite a nota do exame (0 a 10):", mediaSemestral));
+        if (exame == null) {
+            return;
+        }
+
+        double mediaFinal = (mediaSemestral + exame) / 2.0;
         if (mediaFinal >= 6.0) {
-            System.out.println("Situação: APROVADO APÓS EXAME.");
+            InputUtils.mostrarInfo(String.format("Média final: %.2f\nSituação: APROVADO APÓS EXAME.", mediaFinal));
         } else {
-            System.out.println("Situação: REPROVADO.");
+            InputUtils.mostrarInfo(String.format("Média final: %.2f\nSituação: REPROVADO.", mediaFinal));
         }
     }
 
-    private static double lerNota(Scanner scanner, String mensagem) {
+    private static Double lerNota(String mensagem) {
         while (true) {
-            double nota = InputUtils.lerDouble(scanner, mensagem);
+            Double nota = InputUtils.lerDouble(mensagem);
+            if (nota == null) {
+                return null;
+            }
             if (nota >= NOTA_MINIMA && nota <= NOTA_MAXIMA) {
                 return nota;
             }
-            System.out.println("Nota fora do intervalo permitido (0 a 10).");
+            InputUtils.mostrarErro("Nota fora do intervalo permitido (0 a 10).");
         }
     }
 }

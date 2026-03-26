@@ -1,12 +1,16 @@
 package br.com.fatec.tpi03;
 
-import java.util.Scanner;
-
 public class Exercicio1Pares {
-    public static void executar(Scanner scanner) {
-        System.out.println("\n--- Exercício 1: Números pares em intervalo ---");
-        int inicio = InputUtils.lerInteiro(scanner, "Digite o início do intervalo: ");
-        int fim = InputUtils.lerInteiro(scanner, "Digite o fim do intervalo: ");
+    public static void executar() {
+        Integer inicio = InputUtils.lerInteiro("Exercício 1\nDigite o início do intervalo:");
+        if (inicio == null) {
+            return;
+        }
+
+        Integer fim = InputUtils.lerInteiro("Exercício 1\nDigite o fim do intervalo:");
+        if (fim == null) {
+            return;
+        }
 
         if (inicio > fim) {
             int temp = inicio;
@@ -25,10 +29,10 @@ public class Exercicio1Pares {
         }
 
         if (!encontrou) {
-            System.out.println("Não há números pares nesse intervalo.");
+            InputUtils.mostrarInfo("Não há números pares nesse intervalo.");
             return;
         }
 
-        System.out.println(saida.toString().trim());
+        InputUtils.mostrarInfo(saida.toString().trim());
     }
 }

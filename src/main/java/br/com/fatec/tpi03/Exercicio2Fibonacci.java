@@ -1,14 +1,14 @@
 package br.com.fatec.tpi03;
 
-import java.util.Scanner;
-
 public class Exercicio2Fibonacci {
-    public static void executar(Scanner scanner) {
-        System.out.println("\n--- Exercício 2: Sequência de Fibonacci até o n-ésimo termo ---");
-        int n = InputUtils.lerInteiro(scanner, "Digite a quantidade de termos (n > 0): ");
+    public static void executar() {
+        Integer n = InputUtils.lerInteiro("Exercício 2\nDigite a quantidade de termos (n > 0):");
+        if (n == null) {
+            return;
+        }
 
         if (n <= 0) {
-            System.out.println("Erro: n deve ser maior que zero.");
+            InputUtils.mostrarErro("Erro: n deve ser maior que zero.");
             return;
         }
 
@@ -31,6 +31,6 @@ public class Exercicio2Fibonacci {
             }
         }
 
-        System.out.println(serie);
+        InputUtils.mostrarInfo(serie.toString());
     }
 }

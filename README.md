@@ -21,6 +21,11 @@ src/
                         └── Exercicio5Incremento.java
 ```
 
+## Entrada/saída e tratamento de erros
+
+- O projeto usa **caixas de mensagem (`JOptionPane`)** para entrada e saída.
+- Todos os programas possuem validação de dados e mensagens de erro para entradas inválidas.
+
 ## Como executar
 
 1. Compilar:

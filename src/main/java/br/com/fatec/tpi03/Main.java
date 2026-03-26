@@ -1,38 +1,33 @@
 package br.com.fatec.tpi03;
 
-import java.util.Scanner;
+import javax.swing.JOptionPane;
 
 public class Main {
     public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
-
         while (true) {
-            exibirMenu();
-            int opcao = InputUtils.lerInteiro(scanner, "Escolha uma opção: ");
+            String menu = "=== LISTA DE EXERCÍCIOS - TPI-03 ===\n"
+                    + "1) Números pares em intervalo\n"
+                    + "2) Sequência de Fibonacci até n termos\n"
+                    + "3) Números primos em intervalo\n"
+                    + "4) Média do aluno (modelo Fatec)\n"
+                    + "5) Intervalo de 0 ao limite com incremento\n"
+                    + "0) Sair\n\n"
+                    + "Escolha uma opção:";
+
+            Integer opcao = InputUtils.lerInteiro(menu);
+            if (opcao == null || opcao == 0) {
+                JOptionPane.showMessageDialog(null, "Encerrando programa.", "Fim", JOptionPane.INFORMATION_MESSAGE);
+                return;
+            }
 
             switch (opcao) {
-                case 1 -> Exercicio1Pares.executar(scanner);
-                case 2 -> Exercicio2Fibonacci.executar(scanner);
-                case 3 -> Exercicio3Primos.executar(scanner);
-                case 4 -> Exercicio4MediaFatec.executar(scanner);
-                case 5 -> Exercicio5Incremento.executar(scanner);
-                case 0 -> {
-                    System.out.println("Encerrando programa.");
-                    scanner.close();
-                    return;
-                }
-                default -> System.out.println("Opção inválida. Tente novamente.");
+                case 1 -> Exercicio1Pares.executar();
+                case 2 -> Exercicio2Fibonacci.executar();
+                case 3 -> Exercicio3Primos.executar();
+                case 4 -> Exercicio4MediaFatec.executar();
+                case 5 -> Exercicio5Incremento.executar();
+                default -> InputUtils.mostrarErro("Opção inválida. Tente novamente.");
             }
         }
-    }
-
-    private static void exibirMenu() {
-        System.out.println("\n=== LISTA DE EXERCÍCIOS - TPI-03 ===");
-        System.out.println("1) Números pares em intervalo");
-        System.out.println("2) Sequência de Fibonacci até n termos");
-        System.out.println("3) Números primos em intervalo");
-        System.out.println("4) Média do aluno (modelo Fatec)");
-        System.out.println("5) Intervalo de 0 ao limite com incremento");
-        System.out.println("0) Sair");
     }
 }

@@ -1,15 +1,19 @@
 package br.com.fatec.tpi03;
 
-import java.util.Scanner;
-
 public class Exercicio5Incremento {
-    public static void executar(Scanner scanner) {
-        System.out.println("\n--- Exercício 5: Intervalo com incremento ---");
-        int limiteSuperior = InputUtils.lerInteiro(scanner, "Digite o limite superior (> 0): ");
-        int incremento = InputUtils.lerInteiro(scanner, "Digite o incremento (> 0): ");
+    public static void executar() {
+        Integer limiteSuperior = InputUtils.lerInteiro("Exercício 5\nDigite o limite superior (> 0):");
+        if (limiteSuperior == null) {
+            return;
+        }
+
+        Integer incremento = InputUtils.lerInteiro("Exercício 5\nDigite o incremento (> 0):");
+        if (incremento == null) {
+            return;
+        }
 
         if (limiteSuperior <= 0 || incremento <= 0) {
-            System.out.println("Erro: limite superior e incremento devem ser maiores que zero.");
+            InputUtils.mostrarErro("Erro: limite superior e incremento devem ser maiores que zero.");
             return;
         }
 
@@ -18,6 +22,6 @@ public class Exercicio5Incremento {
             saida.append(i).append(' ');
         }
 
-        System.out.println(saida.toString().trim());
+        InputUtils.mostrarInfo(saida.toString().trim());
     }
 }
