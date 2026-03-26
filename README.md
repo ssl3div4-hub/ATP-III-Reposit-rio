@@ -1,43 +1,39 @@
 # ATP-III-Reposit-rio
 
-Estrutura Java (Maven) com os 5 exercícios da lista TPI-03.
+Agora cada exercício está separado em sua própria estrutura Java, como você pediu:
 
-## Estrutura de pastas
+- `exercicio-01/src/main/java`
+- `exercicio-02/src/main/java`
+- `exercicio-03/src/main/java`
+- `exercicio-04/src/main/java`
+- `exercicio-05/src/main/java`
+
+## Estrutura
 
 ```text
-src/
-└── main/
-    └── java/
-        └── br/
-            └── com/
-                └── fatec/
-                    └── tpi03/
-                        ├── Main.java
-                        ├── InputUtils.java
-                        ├── Exercicio1Pares.java
-                        ├── Exercicio2Fibonacci.java
-                        ├── Exercicio3Primos.java
-                        ├── Exercicio4MediaFatec.java
-                        └── Exercicio5Incremento.java
+exercicio-01/
+  src/main/java/br/com/fatec/tpi03/Main.java
+  src/main/java/br/com/fatec/tpi03/InputUtils.java
+exercicio-02/
+  src/main/java/br/com/fatec/tpi03/Main.java
+  src/main/java/br/com/fatec/tpi03/InputUtils.java
+exercicio-03/
+  src/main/java/br/com/fatec/tpi03/Main.java
+  src/main/java/br/com/fatec/tpi03/InputUtils.java
+exercicio-04/
+  src/main/java/br/com/fatec/tpi03/Main.java
+  src/main/java/br/com/fatec/tpi03/InputUtils.java
+exercicio-05/
+  src/main/java/br/com/fatec/tpi03/Main.java
+  src/main/java/br/com/fatec/tpi03/InputUtils.java
 ```
 
-## Entrada/saída e tratamento de erros
-
-- O projeto usa **caixas de mensagem (`JOptionPane`)** para entrada e saída.
-- Todos os programas possuem validação de dados e mensagens de erro para entradas inválidas.
-
-## Como executar
-
-1. Compilar:
+## Como compilar e executar (exemplo)
 
 ```bash
-mvn compile
+cd exercicio-01
+javac -d out $(find src/main/java -name '*.java')
+java -cp out br.com.fatec.tpi03.Main
 ```
 
-2. Executar:
-
-```bash
-mvn -q exec:java -Dexec.mainClass="br.com.fatec.tpi03.Main"
-```
-
-> Se o plugin `exec-maven-plugin` não estiver instalado automaticamente, também dá para rodar com `javac` e `java`.
+Repita trocando a pasta (`exercicio-02`, ..., `exercicio-05`) para rodar os demais.
